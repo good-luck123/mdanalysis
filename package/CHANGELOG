@@ -14,11 +14,13 @@ The rules for this file:
 
 ------------------------------------------------------------------------------
 ??/??/?? tylerjereddy, richardjgowers, IAlibay, hmacdope, orbeckst, cbouy,
-         lilyminium, daveminh, jbarnoud, yuxuanzhuang
+         lilyminium, daveminh, jbarnoud, yuxuanzhuang, VOD555
 
   * 2.0.0
 
 Fixes
+  * ResidueAttrs now have Atom as a target class by default; ICodes and 
+    Molnums now have default target_classes (#2803, PR #2805)
   * Selections on emtpy AtomGroups now return an empty AtomGroup instead of an
     error (Issue #2765)
   * TOPParser no longer guesses elements when missing atomic number records
@@ -29,6 +31,10 @@ Fixes
   * TRZReader now checks `n_atoms` on reading. (Issue #2817, PR #2820)
   * TRZWriter now writes `n_atoms` to the file. (Issue #2817, PR #2820)
   * Fixed performance regression on select_atoms for string selections (#2751)
+  * rdf.InterRDF_s density keyword documented and now gives correct results for
+    density=True; the keyword was available since 0.19.0 but with incorrect
+    semantics and not documented and did not produce correct results (Issue
+    #2811, PR #2812)
 
 Enhancements
   * Added the RDKitParser which creates a `core.topology.Topology` object from
@@ -42,11 +48,13 @@ Enhancements
   * Added converter between Cartesian and Bond-Angle-Torsion coordinates (PR #2668)
   * Improved performance of select_atoms on strings (e.g. name, type, resname) and
     'protein' selection (#2751 PR #2755)
+  * Added Hydrogen Bond Lifetime via existing autocorrelation features (PR #2791)
+  * Added Hydrogen Bond Lifetime keyword "between" (PR #2791)
 
 Changes
   * deprecated NumPy type aliases have been replaced with their actual types
     (see upstream NumPy PR 14882), and our pytest configuration will raise an
-    error for any violation when testing with development NumPy builds 
+    error for any violation when testing with development NumPy builds
     (`1.20.0`)
   * Changes development status from Beta to Mature (Issue #2773)
   * Removes deprecated MDAnalysis.analysis.hole, please use
